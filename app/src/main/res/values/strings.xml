@@ -3,4 +3,5 @@
     <string name="recent_transaction">RECENT TRANSACTION</string>
     <string name="current_balance">Current Balance</string>
     <string name="card_number_dots">•••• •••• •••• ••••</string>
+    <string name="fab_transaction_description">Add new transaction</string>
 </resources>

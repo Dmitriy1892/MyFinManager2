@@ -36,12 +36,10 @@ class TransactionsFragment : Fragment() {
         TabLayoutMediator(binding.scrollbarTabLayout, binding.cardHolderViewPager
         ) { _, _ -> }.attach()
 
+        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
+        linearLayoutManager.stackFromEnd = true
         binding.transactionsRecyclerView.adapter = transactionsAdapter
-        binding.transactionsRecyclerView.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.VERTICAL,
-            true
-        )
+        binding.transactionsRecyclerView.layoutManager = linearLayoutManager
 
         viewModel = ViewModelProvider(this).get(TransactionsViewModel::class.java)
 

@@ -1,5 +1,6 @@
 package com.coldfier.myfinmanager2.transactionsfragment
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,10 +8,13 @@ import com.coldfier.myfinmanager2.databinding.ItemCardBinding
 import com.coldfier.myfinmanager2.models.Card
 import com.coldfier.myfinmanager2.models.Transaction
 
-class CardVHAdapter(): RecyclerView.Adapter<CardViewHolder>() {
+class CardVHAdapter: RecyclerView.Adapter<CardViewHolder>() {
 
     var contentList = listOf(
         Card("1", 1111, "MTBank", 100.00, "BYN", listOf(
+            Transaction("Food", "MINSK/TC GALLERY", "25", "BYN", "24.07.2021 14:37"),
+            Transaction("Car", "MINSK/BELURUSNEFT", "55", "BYN", "25.07.2021 12:30"),
+            Transaction("Food", "MINSK/TC GALLERY", "25", "BYN", "27.07.2021 14:37"),
             Transaction("Food", "MINSK/TC GALLERY", "25", "BYN", "24.07.2021 14:37"),
             Transaction("Car", "MINSK/BELURUSNEFT", "55", "BYN", "25.07.2021 12:30"),
             Transaction("Food", "MINSK/TC GALLERY", "25", "BYN", "27.07.2021 14:37")
@@ -28,6 +32,7 @@ class CardVHAdapter(): RecyclerView.Adapter<CardViewHolder>() {
             Transaction("Food", "MINSK/TC GALLERY", "25", "BYN", "27.07.2021 14:37")
         ))
     )
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

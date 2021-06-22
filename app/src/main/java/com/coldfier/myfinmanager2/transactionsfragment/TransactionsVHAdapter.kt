@@ -1,5 +1,6 @@
 package com.coldfier.myfinmanager2.transactionsfragment
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import com.coldfier.myfinmanager2.models.Transaction
 class TransactionsVHAdapter: RecyclerView.Adapter<TransactionsViewHolder>() {
 
     var transactionsList = mutableListOf<Transaction>()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
