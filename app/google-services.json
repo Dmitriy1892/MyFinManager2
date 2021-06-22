@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83676756566",
+    "project_id": "myfinmanager2",
+    "storage_bucket": "myfinmanager2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83676756566:android:b5bec9cc4d703e277ad9f7",
+        "android_client_info": {
+          "package_name": "com.coldfier.myfinmanager2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83676756566-por0fg4mtd1uniks2dva5o2br0g9krbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRqc-_TaXJStwMxEvN4dcin9fkOOim6vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83676756566-por0fg4mtd1uniks2dva5o2br0g9krbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

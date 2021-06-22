@@ -4,64 +4,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardItem"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="8dp">
+    <data>
+        <variable
+            name="card"
+            type="com.coldfier.myfinmanager2.models.Card" />
+    </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#03A9F4">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="266dp"
+            android:layout_height="166dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="UselessParent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardItem"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp">
 
-            <TextView
-                android:id="@+id/currentBalance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Current Balance"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#03A9F4">
 
-            <TextView
-                android:id="@+id/card_balance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="500.07 BYN"
-                android:textColor="#FFFFFFFF"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/currentBalance"
-                app:layout_constraintTop_toBottomOf="@+id/currentBalance" />
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/current_balance"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/dotHolder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="•••• •••• •••• ••••"
-                android:textColor="#FFFFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/card_balance"
-                app:layout_constraintTop_toBottomOf="@+id/card_balance" />
+                    <TextView
+                        android:id="@+id/currentBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="12sp"
+                        app:bindBalance="@{card}"
+                        app:layout_constraintStart_toStartOf="@+id/tv1"
+                        app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:text="4558"
-                android:textColor="#FFFFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/dotHolder"
-                app:layout_constraintStart_toEndOf="@+id/dotHolder"
-                app:layout_constraintTop_toTopOf="@+id/dotHolder" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/tv2dotHolder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:text="@string/card_number_dots"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="@+id/currentBalance"
+                        app:layout_constraintTop_toBottomOf="@+id/currentBalance" />
+
+                    <TextView
+                        android:id="@+id/cardNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="16sp"
+                        app:bindCardNumber="@{card}"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv2dotHolder"
+                        app:layout_constraintStart_toEndOf="@+id/tv2dotHolder"
+                        app:layout_constraintTop_toTopOf="@+id/tv2dotHolder" />
+
+                    <TextView
+                        android:id="@+id/cardName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{card.name}"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+
+    </FrameLayout>
+
 </layout>
 

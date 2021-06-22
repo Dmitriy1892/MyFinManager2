@@ -2,6 +2,7 @@ package com.coldfier.myfinmanager2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import androidx.databinding.DataBindingUtil
 import com.coldfier.myfinmanager2.databinding.ActivityMainBinding
 

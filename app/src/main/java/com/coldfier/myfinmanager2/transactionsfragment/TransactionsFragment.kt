@@ -6,27 +6,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.coldfier.myfinmanager2.R
+import com.coldfier.myfinmanager2.databinding.TransactionsFragmentBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class TransactionsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TransactionsFragment()
-    }
-
     private lateinit var viewModel: TransactionsViewModel
+    private lateinit var binding: TransactionsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.transactions_fragment, container, false)
-    }
+    ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.transactions_fragment, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        val transactionsAdapter = TransactionsVHAdapter()
+        val cardVHAdapter = CardVHAdapter()
+
+        binding.cardHolderViewPager.adapter = cardVHAdapter
+        binding.cardHolderViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                transactionsAdapter.transactionsList = cardVHAdapter.contentList[position].transactionsList.toMutableList()
+            }
+        })
+        TabLayoutMediator(binding.scrollbarTabLayout, binding.cardHolderViewPager
+        ) { _, _ -> }.attach()
+
+        binding.transactionsRecyclerView.adapter = transactionsAdapter
+        binding.transactionsRecyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.VERTICAL,
+            true
+        )
+
         viewModel = ViewModelProvider(this).get(TransactionsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+        return binding.root
+    }
 }
