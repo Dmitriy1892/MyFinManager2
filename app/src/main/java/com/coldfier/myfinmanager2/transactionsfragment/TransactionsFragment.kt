@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.coldfier.myfinmanager2.R
 import com.coldfier.myfinmanager2.databinding.TransactionsFragmentBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class TransactionsFragment : Fragment() {
 
@@ -43,6 +46,19 @@ class TransactionsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(TransactionsViewModel::class.java)
 
+        setHasOptionsMenu(true)
+        binding.toolbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.logout_icon -> {
+                    Firebase.auth.signOut()
+                    findNavController().navigateUp()
+                }
+            }
+            true
+        }
+
         return binding.root
     }
+
+
 }

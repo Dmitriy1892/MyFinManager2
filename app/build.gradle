@@ -44,6 +44,7 @@ dependencies {
 
     //Room
     implementation "androidx.room:room-runtime:2.3.0"
+
     annotationProcessor "androidx.room:room-compiler:2.3.0"
 
     //Retrofit & Moshi
@@ -79,7 +80,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     // Declare the dependencies for any other desired Firebase products
     // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
-    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
     // Declare the dependency for the Cloud Storage library

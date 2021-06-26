@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "83676756566-t4a3evfn4p73dle701c8hibh9iss5upq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coldfier.myfinmanager2",
+            "certificate_hash": "cf9f49f03e173cc07e1bca9afd97e6464027de75"
+          }
+        },
+        {
           "client_id": "83676756566-por0fg4mtd1uniks2dva5o2br0g9krbd.apps.googleusercontent.com",
           "client_type": 3
         }
