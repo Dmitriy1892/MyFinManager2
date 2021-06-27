@@ -6,4 +6,6 @@
     <string name="fab_transaction_description">Add new transaction</string>
     <string name="def_web_client_id" translatable="false">83676756566-arc2dra8lvjmb1j029bon6chc282u6bu.apps.googleusercontent.com</string>
     <string name="logout_icon">Logout</string>
+    <string name="add_new_card">Add new card</string>
+    <string name="my_cards">My cards:</string>
 </resources>
