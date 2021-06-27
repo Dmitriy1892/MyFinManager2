@@ -20,7 +20,7 @@ class CardsFragment : Fragment() {
     ): View {
 
         binding = CardsFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(CardsViewModel::class.java)
+        viewModel = ViewModelProvider(this, CardsViewModelFactory(requireActivity().application)).get(CardsViewModel::class.java)
 
         val adapter = CardsRVAdapter()
         binding.cardsRecyclerView.adapter = adapter
