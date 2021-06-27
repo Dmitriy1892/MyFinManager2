@@ -3,11 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/transactionsFragment">
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.coldfier.myfinmanager2.signinfragment.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/sign_in_fragment">
+        <action
+            android:id="@+id/action_signInFragment_to_transactionsFragment"
+            app:destination="@id/transactionsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/transactionsFragment"
         android:name="com.coldfier.myfinmanager2.transactionsfragment.TransactionsFragment"
         android:label="TransactionsFragment"
-        tools:layout="@layout/transactions_fragment"/>
+        tools:layout="@layout/transactions_fragment">
+        <argument
+            android:name="currentUser"
+            app:argType="com.google.firebase.auth.FirebaseUser" />
+    </fragment>
+
 </navigation>
