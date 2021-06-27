@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,7 @@ import com.coldfier.myfinmanager2.R
 import com.coldfier.myfinmanager2.databinding.SignInFragmentBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
@@ -37,49 +39,37 @@ class SignInFragment : Fragment() {
 
     private lateinit var googleActivityResultLauncher: ActivityResultLauncher<Intent>
 
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
 
-        googleActivityResultLauncher = registerForActivityResult(object:
-            ActivityResultContract<Intent, Task<GoogleSignInAccount>>(){
-                override fun createIntent(context: Context, input: Intent): Intent {
-                    return input
-                }
+        val googleSignInOptions =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.def_web_client_id))
+                .requestEmail()
+                .build()
 
-                override fun parseResult(
-                    resultCode: Int,
-                    intent: Intent?
-                ): Task<GoogleSignInAccount>? {
-                    if (resultCode == RESULT_OK && intent != null) {
-                        return GoogleSignIn.getSignedInAccountFromIntent(intent)
-                    }
-                    return null
-                }
-        }) { task ->
-            if (task != null) {
-                val account = task.getResult(ApiException::class.java)!!
-                lifecycleScope.launch {
-                    SignInFirebaseAuth.firebaseAuthWithGoogle(account.idToken!!) { user ->
-                        if (user != null) {
-                            val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(user)
-                            findNavController().navigate(action)
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Fail to sign-in, please repeat",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
+
+        googleActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+                val account = task.getResult(ApiException::class.java)
+                SignInFirebaseAuth.firebaseAuthWithGoogle(account!!.idToken!!) {
+                    if (it != null) {
+                        val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(auth.currentUser!!)
+                        findNavController().navigate(action)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Fail to sign-in, please repeat",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Fail to sign-in, please repeat",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
         }
     }
@@ -94,31 +84,28 @@ class SignInFragment : Fragment() {
 
         binding.googleButon.setSize(SignInButton.SIZE_STANDARD)
         binding.googleButon.setOnClickListener {
-            val googleSignInOptions =
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.def_web_client_id))
-                    .requestEmail()
-                    .build()
-            val googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
             googleActivityResultLauncher.launch(googleSignInClient.signInIntent)
         }
 
         binding.registerButton.setOnClickListener {
             if (binding.emailEditText.text != null && binding.passwordEditText.text != null) {
                 lifecycleScope.launch {
-                    SignInFirebaseAuth.createUserWithEmailAndPassword(
-                        binding.emailEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
-                    ) { user ->
-                        if (user != null) {
-                            val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(user)
-                            findNavController().navigate(action)
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Fail to register new user, please repeat",
-                                Toast.LENGTH_SHORT
-                            ).show()
+
+                    if (binding.emailEditText.text.toString() != "" && binding.passwordEditText.toString() != "") {
+                        SignInFirebaseAuth.createUserWithEmailAndPassword(
+                            binding.emailEditText.text.toString(),
+                            binding.passwordEditText.text.toString()
+                        ) { user ->
+                            if (user != null) {
+                                val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(user)
+                                findNavController().navigate(action)
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Fail to register new user, please repeat",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                     }
                 }
@@ -126,25 +113,26 @@ class SignInFragment : Fragment() {
         }
 
         binding.signInButton.setOnClickListener {
-            if (binding.emailEditText.text != null && binding.passwordEditText.text != null) {
+            if (binding.emailEditText.text.toString() != "" && binding.passwordEditText.toString() != "") {
                 lifecycleScope.launch {
-                    SignInFirebaseAuth.signInWithEmailAndPassword(
-                        binding.emailEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
-                    ) { user ->
-                        if (user != null) {
-                            val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(user)
-                            findNavController().navigate(action)
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Fail to sign-in, please repeat",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                    if (binding.emailEditText.text != null && binding.passwordEditText.text != null) {
+                        SignInFirebaseAuth.signInWithEmailAndPassword(
+                            binding.emailEditText.text.toString(),
+                            binding.passwordEditText.text.toString()
+                        ) { user ->
+                            if (user != null) {
+                                val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(user)
+                                findNavController().navigate(action)
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Fail to sign-in, please repeat",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                     }
                 }
-
             }
         }
 

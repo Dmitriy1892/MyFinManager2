@@ -14,16 +14,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "83676756566-t4a3evfn4p73dle701c8hibh9iss5upq.apps.googleusercontent.com",
+          "client_id": "83676756566-k1d6oqpmpq1ld30g6aco1m0140pqtq4j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.coldfier.myfinmanager2",
-            "certificate_hash": "cf9f49f03e173cc07e1bca9afd97e6464027de75"
+            "certificate_hash": "7bd24e0229eac5c8ba9f9bf7e26496f5ddcaa817"
           }
-        },
-        {
-          "client_id": "83676756566-por0fg4mtd1uniks2dva5o2br0g9krbd.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -35,7 +31,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "83676756566-por0fg4mtd1uniks2dva5o2br0g9krbd.apps.googleusercontent.com",
+              "client_id": "83676756566-arc2dra8lvjmb1j029bon6chc282u6bu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

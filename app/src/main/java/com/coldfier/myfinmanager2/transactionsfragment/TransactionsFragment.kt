@@ -12,9 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.coldfier.myfinmanager2.R
 import com.coldfier.myfinmanager2.databinding.TransactionsFragmentBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.lang.Exception
 
 class TransactionsFragment : Fragment() {
 
@@ -46,11 +50,18 @@ class TransactionsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(TransactionsViewModel::class.java)
 
-        setHasOptionsMenu(true)
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.logout_icon -> {
                     Firebase.auth.signOut()
+                    try {
+                        val googleSignInOptions =
+                            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                .requestIdToken(getString(R.string.def_web_client_id))
+                                .requestEmail()
+                                .build()
+                        GoogleSignIn.getClient(requireContext(), googleSignInOptions).signOut()
+                    } catch (e: Exception) {  }
                     findNavController().navigateUp()
                 }
             }
