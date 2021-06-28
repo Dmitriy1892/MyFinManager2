@@ -18,7 +18,7 @@ fun <T> MutableLiveData<List<T>>.deleteCard(card: T) {
 fun MutableLiveData<List<Card>>.updateCard(card: Card) {
     val buffer = this.value?.toMutableList() ?: mutableListOf()
     buffer.mapIndexed { index, cardInList ->
-        if (cardInList.id == card.id) buffer[index] = card
+        if (cardInList.cardId == card.cardId) buffer[index] = card
     }
     this.value = buffer
 }

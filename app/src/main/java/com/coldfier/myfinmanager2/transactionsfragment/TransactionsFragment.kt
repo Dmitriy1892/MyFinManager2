@@ -22,16 +22,30 @@ class TransactionsFragment : Fragment() {
 
     private lateinit var viewModel: TransactionsViewModel
     private lateinit var binding: TransactionsFragmentBinding
+    private var initCardId = 0L
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val arguments = TransactionsFragmentArgs.fromBundle(arguments)
+        initCardId = arguments.currentCardId
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.transactions_fragment, container, false)
+        viewModel = ViewModelProvider(
+            this,
+            TransactionsVewModelFactory(initCardId, requireActivity().application)
+        ).get(TransactionsViewModel::class.java)
+
+
 
         val transactionsAdapter = TransactionsVHAdapter()
         val cardVHAdapter = CardVHAdapter()
-
         binding.cardHolderViewPager.adapter = cardVHAdapter
         binding.cardHolderViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -46,7 +60,13 @@ class TransactionsFragment : Fragment() {
         binding.transactionsRecyclerView.adapter = transactionsAdapter
         binding.transactionsRecyclerView.layoutManager = linearLayoutManager
 
-        viewModel = ViewModelProvider(this).get(TransactionsViewModel::class.java)
+        viewModel.cardsWithTransactionsList.observe(viewLifecycleOwner) {
+            cardVHAdapter.contentList = it
+        }
+
+        viewModel.currentViewPagerPosition.observe(viewLifecycleOwner) {
+            binding.cardHolderViewPager.setCurrentItem(it, false)
+        }
 
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {

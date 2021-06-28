@@ -25,7 +25,7 @@ class CardsRVAdapter: ListAdapter<Card, CardsViewHolder>(CardsDiffCallback()) {
 
 class CardsDiffCallback: DiffUtil.ItemCallback<Card>() {
     override fun areItemsTheSame(oldItem: Card, newItem: Card): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.cardId == newItem.cardId
     }
 
     override fun areContentsTheSame(oldItem: Card, newItem: Card): Boolean {

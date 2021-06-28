@@ -25,6 +25,9 @@
         <argument
             android:name="currentUser"
             app:argType="com.google.firebase.auth.FirebaseUser" />
+        <argument
+            android:name="currentCardId"
+            app:argType="long" />
     </fragment>
 
 </navigation>

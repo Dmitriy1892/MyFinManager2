@@ -27,7 +27,7 @@ class CardsViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCardsList() {
         viewModelScope.launch(Dispatchers.IO) {
-            _cardsList.value = CardsRepository.getInstance(app.applicationContext).getCardsList()
+            _cardsList.value = CardsRepository.getInstance(app.applicationContext).getCardsList()?.map { item -> item.card }
         }
     }
 
