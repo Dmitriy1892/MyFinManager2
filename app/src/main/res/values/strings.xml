@@ -8,4 +8,21 @@
     <string name="logout_icon">Logout</string>
     <string name="add_new_card">Add new card</string>
     <string name="my_cards">My cards:</string>
+    <string name="add_the_card_info">Add the card info</string>
+    <string name="card_name">Card Name:</string>
+    <string name="enter_card_name_hint">Enter card name</string>
+    <string name="card_number">Card Number:</string>
+    <string name="card_number_hint">1234</string>
+    <string name="card_balance">Card Balance:</string>
+    <string name="card_balance_hint">1234.00</string>
+    <string name="card_currency">Card Currency:</string>
+    <string name="save_new_card_button">Save new card</string>
+    <string name="new_card_icon_desc">New card icon</string>
+
+    <string-array name="currency_list">
+        <item>BYN</item>
+        <item>RUR</item>
+        <item>EUR</item>
+        <item>USD</item>
+    </string-array>
 </resources>

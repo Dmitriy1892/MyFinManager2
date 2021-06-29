@@ -27,7 +27,7 @@ class TransactionsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val arguments = TransactionsFragmentArgs.fromBundle(arguments)
+        val arguments = TransactionsFragmentArgs.fromBundle(requireArguments())
         initCardId = arguments.currentCardId
     }
 
@@ -41,8 +41,6 @@ class TransactionsFragment : Fragment() {
             this,
             TransactionsVewModelFactory(initCardId, requireActivity().application)
         ).get(TransactionsViewModel::class.java)
-
-
 
         val transactionsAdapter = TransactionsVHAdapter()
         val cardVHAdapter = CardVHAdapter()

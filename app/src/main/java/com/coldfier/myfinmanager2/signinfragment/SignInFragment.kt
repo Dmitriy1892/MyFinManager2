@@ -57,7 +57,7 @@ class SignInFragment : Fragment() {
 
         viewModel.authUserState.observe(viewLifecycleOwner) {
             if (it && auth.currentUser != null) {
-                val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(auth.currentUser!!)
+                val action = SignInFragmentDirections.actionSignInFragmentToCardsFragment(auth.currentUser!!)
                 findNavController().navigate(action)
             }
         }
@@ -100,7 +100,7 @@ class SignInFragment : Fragment() {
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            val action = SignInFragmentDirections.actionSignInFragmentToTransactionsFragment(currentUser)
+            val action = SignInFragmentDirections.actionSignInFragmentToCardsFragment(currentUser)
             findNavController().navigate(action)
         }
     }
