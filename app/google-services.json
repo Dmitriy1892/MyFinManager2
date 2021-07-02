@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "83676756566",
+    "firebase_url": "https://myfinmanager2-default-rtdb.firebaseio.com",
     "project_id": "myfinmanager2",
     "storage_bucket": "myfinmanager2.appspot.com"
   },
@@ -14,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "83676756566-k1d6oqpmpq1ld30g6aco1m0140pqtq4j.apps.googleusercontent.com",
+          "client_id": "83676756566-c09strcng4sevjlbr4uh5vkvgil76pr5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.coldfier.myfinmanager2",
-            "certificate_hash": "7bd24e0229eac5c8ba9f9bf7e26496f5ddcaa817"
+            "certificate_hash": "cf9f49f03e173cc07e1bca9afd97e6464027de75"
           }
         }
       ],

@@ -29,11 +29,11 @@ class TransactionsViewModel(private val initCardId: Long, application: Applicati
     fun getCardsWithTransactionsList() {
         viewModelScope.launch(Dispatchers.IO) {
 
-            _cardsWithTransactionsList.value = CardsRepository.getInstance(app.applicationContext).getCardsList()
+            _cardsWithTransactionsList.postValue(CardsRepository.getInstance(app.applicationContext).getCardsList())
 
             _cardsWithTransactionsList.value?.forEachIndexed { index, cardWithTransactions ->
                 if (cardWithTransactions.card.cardId == initCardId) {
-                    _currentViewPagerPosition.value = index
+                    _currentViewPagerPosition.postValue(index)
                 }
             }
         }

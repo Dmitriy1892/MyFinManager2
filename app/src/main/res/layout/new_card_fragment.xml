@@ -94,7 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/newCardNumberEditText" />
 
         <EditText
-            android:id="@+id/newCardNumberEditText2"
+            android:id="@+id/newCardBalanceEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -115,8 +115,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/card_currency"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/newCardNumberEditText2"
-            app:layout_constraintTop_toBottomOf="@+id/newCardNumberEditText2" />
+            app:layout_constraintStart_toStartOf="@+id/newCardBalanceEditText"
+            app:layout_constraintTop_toBottomOf="@+id/newCardBalanceEditText" />
 
         <Spinner
             android:id="@+id/newCardCurrencySpinner"

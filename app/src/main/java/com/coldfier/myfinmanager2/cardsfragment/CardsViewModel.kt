@@ -27,7 +27,15 @@ class CardsViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCardsList() {
         viewModelScope.launch(Dispatchers.IO) {
-            _cardsList.value = CardsRepository.getInstance(app.applicationContext).getCardsList()?.map { item -> item.card }
+            val instance = CardsRepository.getInstance(app.applicationContext)
+            val list = instance.getCardsList()
+            val list2 = list?.map { item -> item.card }
+
+            if (list2 != null) {
+                if (list2.isNotEmpty()) {
+                    _cardsList.postValue(list2!!)
+                }
+            }
         }
     }
 

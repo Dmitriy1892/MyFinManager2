@@ -14,6 +14,7 @@
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/drawable/tab_selector.xml" value="0.2203125" />
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/item_card.xml" value="0.4083333333333333" />
+        <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/item_card_card.xml" value="0.1" />
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/item_transaction.xml" value="0.1" />
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/sign_in_fragment.xml" value="0.25" />
         <entry key="..\:/Android/MyFinManager2/app/src/main/res/layout/transactions_fragment.xml" value="0.22" />
@@ -21,16 +22,12 @@
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/card_background.xml" value="0.8375" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/default_dot.xml" value="0.2462962962962963" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/ic_menu.xml" value="0.2388888888888889" />
-        <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/ic_new_card.xml" value="0.2351851851851852" />
-        <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/new_card.xml" value="0.176" />
-        <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/new_card_drawable.xml" value="0.9071428571428571" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/selected_dot.xml" value="0.2462962962962963" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/drawable/tab_selector.xml" value="0.2462962962962963" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/cards_fragment.xml" value="0.264" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/item_card.xml" value="0.6" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/item_transaction.xml" value="0.4" />
-        <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/new_card_fragment.xml" value="0.176" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/sign_in_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/layout/transactions_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Kotlin/MyFinManager2/app/src/main/res/menu/cards_menu.xml" value="0.25416666666666665" />

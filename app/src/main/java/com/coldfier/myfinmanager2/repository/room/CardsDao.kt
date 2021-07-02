@@ -37,7 +37,7 @@ interface CardsDao {
     suspend fun updateTransaction(transaction: Transaction)
 
     @Query("SELECT * FROM transactions_table WHERE transactionId = :transactionId")
-    suspend fun getTransaction(transactionId: Long)
+    suspend fun getTransaction(transactionId: Long): Transaction
 
     @Query("DELETE FROM transactions_table WHERE transactionId = :transactionId")
     suspend fun deleteTransaction(transactionId: Long)
